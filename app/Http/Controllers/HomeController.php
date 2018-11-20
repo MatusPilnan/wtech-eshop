@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Subcategory;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $prod = Subcategory::whereNotIn('name', ['doprava', 'platba'])->first()->products()->orderBy('created_at', 'desc')->get();
+        $new = $prod->take(3);
+        $rec = $prod->shuffle()->take(3);
+        return view('home', compact('rec', $rec, 'new', $new));
     }
 }

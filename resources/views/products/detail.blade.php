@@ -51,33 +51,7 @@
     <div class="col">
         <h2>Podrobnosti</h2>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor sapien et quam
-            venenatis, ut porta mi condimentum. Suspendisse pellentesque urna eget venenatis accumsan.
-            Aenean blandit massa venenatis semper mollis. Nulla pretium et turpis et semper. Etiam eget
-            sollicitudin libero, eu bibendum magna. Nam ipsum metus, laoreet at libero sollicitudin,
-            bibendum hendrerit elit. Integer lobortis consequat lorem, id aliquet arcu tincidunt ut.
-            Phasellus id mi ac tellus sagittis fringilla et vitae magna. Morbi sagittis dui vitae
-            pharetra consectetur.
-        </p>
-        <p>
-            In laoreet eget nulla eget pretium. Cras varius diam magna, quis imperdiet metus mattis ut.
-            Praesent at pulvinar est. Proin arcu ante, pellentesque vitae massa placerat, condimentum
-            egestas sem. Aenean ac diam sed orci dignissim aliquam. Maecenas commodo varius nibh ut
-            ultrices. Nulla ac nisi eget lectus vehicula blandit. Nunc pretium iaculis convallis. Sed
-            eget sem iaculis, efficitur leo sit amet, sodales orci. Class aptent taciti sociosqu ad
-            litora torquent per conubia nostra, per inceptos himenaeos. Proin libero purus, tristique
-            in egestas sit amet, porttitor eu nisl. In dolor nibh, posuere in purus at, congue
-            venenatis risus. Vivamus dictum, ante in imperdiet vestibulum, lectus nulla imperdiet leo,
-            id laoreet nunc lacus condimentum massa. Proin quis blandit nibh, at tempus ligula. Fusce
-            eu mauris placerat, consequat neque id, euismod erat.
-        </p>
-        <p>
-            Aliquam erat volutpat. Aenean sit amet enim mattis, hendrerit felis ut, malesuada magna.
-            Praesent interdum risus quis est blandit scelerisque vitae ac leo. Vivamus tempus fermentum
-            luctus. Vivamus et ante tincidunt, gravida purus id, interdum lectus. Cras commodo dui et
-            lacus posuere gravida. Integer non posuere ex. Nunc tempor, elit nec porta feugiat, felis
-            odio aliquam elit, vel rhoncus nunc ante id turpis. Donec in scelerisque nibh. Vivamus
-            mattis auctor libero, eu finibus augue tempor ut.
+            {{$product->long_desc}}
         </p>
     </div>
 </div>
