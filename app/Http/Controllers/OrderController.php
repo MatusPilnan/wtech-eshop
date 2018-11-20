@@ -183,7 +183,7 @@ class OrderController extends Controller
     {
         $cart = session('cart', array());
         $products = Product::whereIn('id', array_keys($cart))->get();
-        $order = Order::create(['user_id' => Auth::user()->id, 'completed' => TRUE]);
+        $order = Order::create(['user_id' => Auth::user()->id, 'completed' => TRUE, 'town' => session('town'), 'street' => session('street'), 'zip' => session('zip')]);
         $order->save();
         $delivery = Product::find(session('delivery_id'));
         $payment = Product::find(session('payment_id'));
