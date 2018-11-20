@@ -35,11 +35,16 @@
         </p>
     </div>
     <div class="col-9 d-flex justify-content-end h-50">
-        <input class="rounded" type="number" placeholder="Počet" min="1">
-        <a class="btn btn-primary" href="#">
-            <img src="{{asset('img/cart-75-16.png')}}">
-            Do košíka
-        </a>
+        <form class="form-inline" action="/cart/add" method="POST">
+            {{ csrf_field() }}
+            {{ method_field('PUT')}}
+            <input type="hidden" name="product_id" value="{{$product->id}}">
+            <input id="pocet" name="qty" class="rounded" type="number" placeholder="Počet" min="1" value="1">
+            <button type="submit" class="btn btn-primary mb-2">
+                <img src="{{asset('img/cart-75-16.png')}}">
+                Do košíka
+            </button>
+        </form>
     </div>
 </div>
 <div class="row">

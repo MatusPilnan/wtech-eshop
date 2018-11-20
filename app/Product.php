@@ -23,7 +23,7 @@ class Product extends Model
 
     public function orders()
     {
-        return $this->belongsToMany('App\Order')->withPivot('qty');
+        return $this->belongsToMany('App\Order')->withTimestamps()->withPivot('qty');
     }
 
     public function subcategory()

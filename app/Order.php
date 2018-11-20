@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    protected $fillable = ['user_id', 'completed'];
+
     public function products()
     {
-        return $this->belongsToMany('App\Product')->withPivot('qty');
+        return $this->belongsToMany('App\Product')->withTimestamps()->withPivot('qty');
     }
 
     public function sum()

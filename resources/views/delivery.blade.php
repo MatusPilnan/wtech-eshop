@@ -24,35 +24,32 @@
     </div>
 </div>
 <h1>Výber dopravy</h1>
-<form class="form-inline" action="" method="POST">
+<form id="deliveryForm" class="form" action="/cart/setDelivery" method="POST">
     <input type="hidden" name="_method" value="PUT">
     {{ csrf_field() }}
-    <select class="form-control" id="doprava">
+    <select class="form-control" id="doprava" name="delivery_id" required>
         @foreach($deliveryOpts as $opt)
-            <option>{{$opt->name}} - {{$opt->price}} €</option>
+            <option value="{{$opt->id}}" @if($opt->id == $selected->id) selected @endif>{{$opt->name}} - {{$opt->price}} €</option>
         @endforeach
     </select>
-    <button type="submit" class="btn btn-primary mb-2">OK</button>
+    
+    <div class="form-group">
+        <label for="obec">Obec</label>
+        <input type="text" class="form-control" id="obec" placeholder="Obec" name="town" value="{{session('town')}}" required>
+    </div>
+    <div class="form-group">
+        <label for="ulica">Ulica a číslo</label>
+        <input type="text" class="form-control" id="ulica" placeholder="Ulica a číslo" name="street" value="{{session('street')}}" required>
+    </div>
+    <div class="form-group">
+        <label for="psc">PSČ</label>
+        <input type="text" class="form-control" id="psc" placeholder="PSČ" name="zip" value="{{session('zip')}}" required>
+    </div>
 </form>
-<div id="adresa">
-    <form>
-        <div class="form-group">
-            <label for="obec">Obec</label>
-            <input type="text" class="form-control" id="obec" placeholder="Obec">
-        </div>
-        <div class="form-group">
-            <label for="ulica">Ulica a číslo</label>
-            <input type="text" class="form-control" id="ulica" placeholder="Ulica a číslo">
-        </div>
-        <div class="form-group">
-            <label for="psc">PSČ</label>
-            <input type="text" class="form-control" id="psc" placeholder="PSČ">
-        </div>
-    </form>
-</div>
+
 <div class="row">
     <div class="col text-right celkova-cena">
-        Celková cena: 1778 €
+        Celková cena tovaru: {{$total}} €
     </div>
 </div>
 <div class="row">
@@ -63,10 +60,10 @@
         </a>
     </div>
     <div class="col text-right">
-        <a href="/order/payment" class="btn btn-primary">
+        <button type="submit" form="deliveryForm" class="btn btn-primary">
             Ďalej
             <img src="{{asset('img/arrow-24-16.png')}}">
-        </a>
+        </button>
     </div>
 </div>
 @endsection

@@ -24,7 +24,7 @@
     </div>
 </div>
 <h1>Zhrnutie objednávky</h1>
-@foreach($order->products as $product)
+@foreach($products as $product)
 <div class="row align-items-center border">
     <div class="col-1 pl-0">
         <img class="d-block w-100" src="{{asset($product->mini()->file)}}" alt="{{$product->name}}">
@@ -33,16 +33,44 @@
         {{$product->name}}
     </div>
     <div class="col">
-        {{$product->pivot->qty}}x
+        {{$cart[$product->id]}}x
     </div>
     <div class="col-2 py-2 text-right">
         {{$product->price}} €
     </div>
 </div>
 @endforeach
+<div class="row align-items-center border">
+    <div class="col-1 pl-0">
+        <img class="d-block w-100" src="{{asset($delivery->mini()->file)}}" alt="{{$delivery->name}}">
+    </div>
+    <div class="col">
+        Doprava: {{$delivery->name}}
+    </div>
+    <div class="col">
+        1x
+    </div>
+    <div class="col-2 py-2 text-right">
+        {{$delivery->price}} €
+    </div>
+</div>
+<div class="row align-items-center border">
+    <div class="col-1 pl-0">
+        <img class="d-block w-100" src="{{asset($payment->mini()->file)}}" alt="{{$payment->name}}">
+    </div>
+    <div class="col">
+        Platba: {{$payment->name}}
+    </div>
+    <div class="col">
+        1x
+    </div>
+    <div class="col-2 py-2 text-right">
+        {{$payment->price}} €
+    </div>
+</div>
 <div class="row">
     <div class="col text-right celkova-cena">
-        Celková cena: {{$order->sum()}} €
+        Celková cena: {{$total + $delivery->price + $payment->price}} €
     </div>
 </div>
 <div class="row py-4">

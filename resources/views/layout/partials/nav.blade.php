@@ -3,7 +3,10 @@
             <img src="{{ asset('img/logo2.png') }}" alt="logo" height="64">
         </a>
         <a class="nav-item btn btn-secondary ml-auto order-lg-3" href="/cart">
-            <img src="{{ asset('img/cart-7-64.png') }}" alt="Nakupny kosik">
+            <img src="{{ asset('img/cart-7-64.png') }}" alt="Nakupny kosik" height="48">
+            @if(!empty(session('cart', array())))
+            <span class="badge badge-light">{{array_sum(session('cart', array()))}}</span>
+            @endif
         </a>
         <button class="navbar-toggler order-lg-4" type="button" data-toggle="collapse" data-target="#navbarMenu">
             <span class="navbar-toggler-icon"></span>
