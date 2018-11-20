@@ -1,0 +1,15 @@
+p.cena{
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.card-body p.cena{
+    font-size: 20px;
+    font-style: italic;
+}
+
+.celkova-cena{
+    font-weight: bold;
+    font-size: 18px;
+}
