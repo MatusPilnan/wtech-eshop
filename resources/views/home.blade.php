@@ -3,7 +3,7 @@
 @section('content')
 <h1>Novinky</h1>
 <div id="carouselNovinky" class="carousel slide border" data-ride="carousel">
-    <ol class="carousel-indicators">
+    <ol class="carousel-indicators color-primary">
         @foreach($new as $product)
         <li data-target="#carouselNovinky" data-slide-to="{{$loop->index}}" @if($loop->first) class="active" @endif></li>
         @endforeach
@@ -21,11 +21,11 @@
         </div>
         @endforeach
     </div>
-    <a class="carousel-control-prev" href="#carouselNovinky" role="button" data-slide="prev">
+    <a class="carousel-control-prev color-primary" href="#carouselNovinky" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#carouselNovinky" role="button" data-slide="next">
+    <a class="carousel-control-next color-primary" href="#carouselNovinky" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
