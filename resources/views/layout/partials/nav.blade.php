@@ -46,7 +46,7 @@
                     </a>
                     <div class="collapse" id="navbarKatalog">
                         <div class="text-right">
-                            @include('layout.partials.catalog')
+                            @include('layout.partials.catalogNav')
                         </div>
 
                     </div>
