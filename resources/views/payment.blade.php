@@ -8,7 +8,7 @@
         </a>
     </div>
     <div class="col d-flex justify-content-center">
-        <a class="btn btn-primary rounded-circle" href="/order/delivery">
+        <a class="btn rounded-circle @if(null!==session('town')) btn-primary @else btn-danger @endif"  href="/order/delivery">
             2
         </a>
     </div>
