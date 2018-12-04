@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -81,5 +81,14 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+    }
+
+    public function list() {
+        return Category::with(['subcategories' => function ($query) {
+            $query->orderBy('name', 'asc');
+        },
+        'subcategories.products' => function ($query) {
+            $query->orderBy('name', 'asc');
+        }, 'subcategories.products.allImages'])->orderBy('name', 'asc')->get()->toJson(JSON_PRETTY_PRINT);
     }
 }

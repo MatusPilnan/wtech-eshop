@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Image;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -22,9 +23,21 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $data =  $request->json()->All();
+        $product = Product::create([
+            'subcategory_id' => $data['subcategory_id'],
+            'name' => $data['name'],
+            'short_desc' => $data['short_desc'],
+            'long_desc' => $data['long_desc'],
+            'price' => $data['price'],
+            'manufacturer_id' => $data['manufacturer_id']
+            ]);
+
+        $product->save();
+
+        return response()->json(['status' => 'success', 'msg' => 'message']);
     }
 
     /**
@@ -35,7 +48,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data =  $request->json()->All();
+        $product = Product::create([
+            'subcategory_id' => $data['subcategory_id'],
+            'name' => $data['name'],
+            'short_desc' => $data['short_desc'],
+            'long_desc' => $data['long_desc'],
+            'price' => $data['price'],
+            'manufacturer_id' => $data['manufacturer_id']
+            ]);
+
+        return response()->json(['status' => 'success', 'msg' => 'message']);
     }
 
     /**
@@ -82,6 +105,17 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        // error handling is up to you!!! ;)
+        return response()->json(['status'=>'success','msg' => 'Product deleted successfully']);
+    }
+
+
+    public function miniImgs() {
+        return Image::where('mini', True)->get()->toJson(JSON_PRETTY_PRINT);
+    }
+
+    public function getProduct($id) {
+        return Product::find($id)->toJson(JSON_PRETTY_PRINT);
     }
 }

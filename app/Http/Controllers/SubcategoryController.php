@@ -80,7 +80,7 @@ class SubcategoryController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**
@@ -115,5 +115,9 @@ class SubcategoryController extends Controller
     public function destroy(Subcategory $subcategory)
     {
         //
+    }
+
+    public function list() {
+        return Subcategory::All()->toJson(JSON_PRETTY_PRINT);
     }
 }

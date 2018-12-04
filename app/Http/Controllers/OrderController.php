@@ -145,7 +145,7 @@ class OrderController extends Controller
     public function addToCart(Request $request)
     {
         $cart = session('cart', array());
-        
+
         if (isset($cart[$request->product_id]))
         {
             $cart[$request->product_id] += $request->qty;
@@ -169,7 +169,7 @@ class OrderController extends Controller
     public function setDelivery(Request $request)
     {
         session(['delivery_id' => $request->delivery_id, 'town' => $request->town, 'street' => $request->street, 'zip' => $request->zip]);
-        
+
         return redirect('/order/payment');
     }
 

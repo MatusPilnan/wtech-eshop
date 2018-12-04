@@ -22,9 +22,10 @@ class ManufacturerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $req)
     {
-        //
+        $man = Manufacturer::create(['name' => $req->data]);
+
     }
 
     /**
@@ -82,4 +83,10 @@ class ManufacturerController extends Controller
     {
         //
     }
+
+    public function list()
+    {
+        return Manufacturer::all()->toJson(JSON_PRETTY_PRINT);
+    }
+
 }
