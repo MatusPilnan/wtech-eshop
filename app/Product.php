@@ -13,14 +13,34 @@ class Product extends Model
         return $this->hasMany('App\Image');
     }
 
+    public function image()
+    {
+        $img = $this->allImages()->where('thumbnail', false)->where('mini', false)->first();
+        if (!isset($img))
+        {
+            $img = new Image(['file' => 'img/logo.png', 'product_id' => $this->id, 'thumbnail' => TRUE]);
+        }
+        return $img;
+    }
+
     public function thumbnail()
     {
-        return $this->allImages()->where('thumbnail', TRUE)->first();
+        $img = $this->allImages()->where('thumbnail', TRUE)->first();
+        if (!isset($img))
+        {
+            $img = new Image(['file' => 'img/logo.png', 'product_id' => $this->id, 'thumbnail' => TRUE]);
+        }
+        return $img;
     }
 
     public function mini()
     {
-        return $this->allImages()->where('mini', TRUE)->first();
+        $img = $this->allImages()->where('mini', TRUE)->first();
+        if (!isset($img))
+        {
+            $img = new Image(['file' => 'img/logo.png', 'product_id' => $this->id, 'mini' => TRUE]);
+        }
+        return $img;
     }
 
     public function orders()

@@ -15,7 +15,7 @@ Route::get('/', function () {
     return redirect('home');
 });
 
-Route::view('/', 'welcome');
+Route::view('/admin', 'welcome');
 
 Auth::routes();
 
@@ -40,5 +40,10 @@ Route::post('/manufacturers/new', 'ManufacturerController@create');
 Route::get('/subcategories/list', 'SubcategoryController@list');
 Route::delete('/products/{product}', 'ProductController@destroy');
 Route::post('/products', 'ProductController@create');
+Route::get('/images/{product_id}', 'ImageController@images');
+Route::get('/images/{product_id}/mini', 'ImageController@mini');
+Route::get('/images/{product_id}/thumbnail', 'ImageController@thumbnail');
+Route::delete('/images/{image}', 'ImageController@destroy');
+Route::post('/images/upload', 'ImageController@upload');
 Route::resource('categories', 'CategoryController');
 Route::resource('/catalog/{subcategory_id}', 'SubcategoryController');

@@ -13,12 +13,20 @@
         </a>
     </div>
     <div class="col d-flex justify-content-center">
-        <a class="btn btn-primary rounded-circle" href="#">
+        @if(null!==session('town'))
+        <a class="btn btn-primary rounded-circle" href="/order/payment">
+        @else
+        <a class="btn btn-primary rounded-circle disabled">
+        @endif
             3
         </a>
     </div>
     <div class="col d-flex justify-content-center">
+        @if(null!==session('town') && null!==session('payment'))
         <a class="btn btn-outline-primary rounded-circle" href="/order/summary">
+        @else
+        <a class="btn btn-outline-primary rounded-circle disabled">
+        @endif
             4
         </a>
     </div>

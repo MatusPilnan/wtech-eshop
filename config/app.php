@@ -211,6 +211,7 @@ return [
 
     ],
 
-    'products.images.path' => 'public/products-images/',
-
+    'products.images.path' => 'products-images/',
+    'products.mini.path' => 'products-images/mini',
+    'products.thumb.path' => 'products-images/thumb',
 ];

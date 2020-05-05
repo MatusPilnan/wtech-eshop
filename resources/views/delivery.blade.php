@@ -22,7 +22,7 @@
         </a>
     </div>
     <div class="col d-flex justify-content-center">
-        @if(null!==session('town'))
+        @if(null!==session('town') && null!==session('payment'))
         <a class="btn btn-outline-primary rounded-circle" href="/order/summary">
         @else
         <a class="btn btn-outline-primary rounded-circle disabled">
@@ -40,7 +40,7 @@
             <option value="{{$opt->id}}" @if($opt->id == $selected->id) selected @endif>{{$opt->name}} - {{$opt->price}} €</option>
         @endforeach
     </select>
-    
+
     <div class="form-group">
         <label for="obec">Obec</label>
         <input type="text" class="form-control" id="obec" placeholder="Obec" name="town" value="{{session('town')}}" required>

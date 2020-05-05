@@ -12,7 +12,7 @@
         @foreach($new as $product)
         <div class="carousel-item @if($loop->first) active @endif">
             <a href="/product/{{$product->id}}">
-                <img class="d-block w-100" src="{{asset($product->allImages()->where('thumbnail', FALSE)->where('mini', FALSE)->first()->file)}}" alt="{{$product->name}}">
+                <img class="d-block w-100" src="{{asset($product->image()->file)}}" alt="{{$product->name}}">
                 <div class="carousel-caption d-none d-md-block text-primary">
                     <h5>{{$product->name}}</h5>
                     <p>{{$product->short_desc}}</p>
@@ -43,7 +43,7 @@
         @foreach($rec as $product)
         <div class="carousel-item @if($loop->first) active @endif">
             <a href="/product/{{$product->id}}">
-                <img class="d-block w-100" src="{{asset($product->allImages()->where('thumbnail', FALSE)->where('mini', FALSE)->first()->file)}}" alt="{{$product->name}}">
+                <img class="d-block w-100" src="{{asset($product->image()->file)}}" alt="{{$product->name}}">
                 <div class="carousel-caption d-none d-md-block text-primary">
                     <h5>{{$product->name}}</h5>
                     <p>{{$product->short_desc}}</p>

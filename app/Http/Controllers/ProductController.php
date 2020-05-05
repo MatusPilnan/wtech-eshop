@@ -26,18 +26,30 @@ class ProductController extends Controller
     public function create(Request $request)
     {
         $data =  $request->json()->All();
-        $product = Product::create([
-            'subcategory_id' => $data['subcategory_id'],
-            'name' => $data['name'],
-            'short_desc' => $data['short_desc'],
-            'long_desc' => $data['long_desc'],
-            'price' => $data['price'],
-            'manufacturer_id' => $data['manufacturer_id']
-            ]);
+
+        if (isset($data['id'])) {
+            $product = Product::find($data['id']);
+            $product->subcategory_id = $data['subcategory_id'];
+            $product->name = $data['name'];
+            $product->short_desc = $data['short_desc'];
+            $product->long_desc = $data['long_desc'];
+            $product->price = $data['price'];
+            $product->manufacturer_id = $data['manufacturer_id'];
+        }
+        else {
+            $product = Product::create([
+                'subcategory_id' => $data['subcategory_id'],
+                'name' => $data['name'],
+                'short_desc' => $data['short_desc'],
+                'long_desc' => $data['long_desc'],
+                'price' => $data['price'],
+                'manufacturer_id' => $data['manufacturer_id']
+                ]);
+        }
 
         $product->save();
 
-        return response()->json(['status' => 'success', 'msg' => 'message']);
+        return response()->json(['status' => 'success', 'product_id' => $product->id]);
     }
 
     /**
@@ -48,17 +60,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $data =  $request->json()->All();
-        $product = Product::create([
-            'subcategory_id' => $data['subcategory_id'],
-            'name' => $data['name'],
-            'short_desc' => $data['short_desc'],
-            'long_desc' => $data['long_desc'],
-            'price' => $data['price'],
-            'manufacturer_id' => $data['manufacturer_id']
-            ]);
 
-        return response()->json(['status' => 'success', 'msg' => 'message']);
     }
 
     /**

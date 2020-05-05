@@ -24,8 +24,9 @@ class ManufacturerController extends Controller
      */
     public function create(Request $req)
     {
-        $man = Manufacturer::create(['name' => $req->data]);
-
+        $man = Manufacturer::create(['name' => $req->json()->all()['name']]);
+        $man->save();
+        return response()->json(['status' => 'success', 'msg' => 'message']);
     }
 
     /**
